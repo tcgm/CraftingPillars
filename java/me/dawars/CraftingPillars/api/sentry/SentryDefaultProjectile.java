@@ -20,9 +20,11 @@ public abstract class SentryDefaultProjectile implements ISentryBehaviorItem
 	@Override
 	public final ItemStack dispense(IBlockSource blockSource,  EntityLivingBase target, EntityLivingBase owner, ItemStack item)
 	{
-		this.playSound(blockSource);
-		this.spawnParticles(blockSource);
-		this.spawnEntity(blockSource, target, owner, item);
+		if(target!=null && owner!=null) {
+			this.playSound(blockSource);
+			this.spawnParticles(blockSource);
+			this.spawnEntity(blockSource, target, owner, item);
+		}
 		return item;
 	}
 
